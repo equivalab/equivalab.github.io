@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Equiva Lab 研究变化之中的不变性，以及不同观测背后的等价表征。" />
+    <meta name="theme-color" content="#f2f1ed" />
+    <meta property="og:title" content="Equiva Lab — Invariance in Motion" />
+    <meta property="og:description" content="研究变化之中的不变性，以及不同观测背后的等价表征。" />
+    <meta property="og:image" content="assets/og-cover.svg" />
+    <title>Equiva Lab — 变化中的不变性</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至主要内容</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Equiva Lab 首页">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="12.25"></circle>
+          <path d="M9 12.25h14M9 19.75h14"></path>
+        </svg>
+        <span>Equiva Lab</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="主导航" data-nav>
+        <a href="#about" data-i18n="nav.about">关于</a>
+        <a href="#research" data-i18n="nav.research">研究</a>
+        <a href="#ideas" data-i18n="nav.ideas">议题</a>
+        <a href="#people" data-i18n="nav.people">团队</a>
+        <a href="#contact" data-i18n="nav.join">加入我们</a>
+      </nav>
+
+      <button class="language-toggle" type="button" aria-label="Switch to English" data-language-toggle>
+        <span class="is-active">中</span><i></i><span>EN</span>
+      </button>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow reveal" data-i18n="hero.eyebrow">EQUIVA LAB · RESEARCH GROUP</p>
+          <h1 class="hero-title reveal" data-i18n-html="hero.title">
+            研究变化之中的<br /><span>不变性</span>
+          </h1>
+          <p class="hero-intro reveal" data-i18n="hero.intro">
+            探索不同观测、模态与环境背后的等价表征。
+          </p>
+          <div class="hero-actions reveal">
+            <a class="text-link" href="#research">
+              <span data-i18n="hero.cta">探索我们的研究</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="不断变化的观测映射到同一个潜在结构的动态示意图">
+          <canvas id="equivalence-canvas"></canvas>
+          <div class="visual-axis axis-left"><span>OBS. A</span><i></i></div>
+          <div class="visual-axis axis-right"><i></i><span>OBS. B</span></div>
+          <div class="visual-core">
+            <span class="core-symbol">≡</span>
+            <span class="core-label" data-i18n="hero.invariant">INVARIANT</span>
+          </div>
+          <div class="visual-caption">
+            <span data-i18n="hero.visualCaption">Different observations. Equivalent form.</span>
+            <span>t → ∞</span>
+          </div>
+        </div>
+
+        <a class="scroll-cue" href="#about" aria-label="向下滚动">
+          <span data-i18n="hero.scroll">SCROLL TO EXPLORE</span>
+          <i></i>
+        </a>
+      </section>
+
+      <section class="statement section-pad" id="about">
+        <div class="section-index reveal">01 / <span data-i18n="section.about">ABOUT</span></div>
+        <div class="statement-grid">
+          <h2 class="display-heading reveal" data-i18n-html="about.title">
+            从不同的观测中，<br />识别<span>共同的结构。</span>
+          </h2>
+          <div class="statement-copy reveal">
+            <p data-i18n="about.p1">
+              同一个对象，会因视角、尺度、模态和环境而呈现不同形态。表象在迁移，规律却可能共享。
+            </p>
+            <p data-i18n="about.p2">
+              Equiva Lab 试图识别这些变化背后的稳定结构，并把它们转化为可理解、可迁移、可验证的表征与方法。
+            </p>
+          </div>
+        </div>
+        <div class="principle-row reveal" aria-label="研究原则">
+          <div><span>01</span><strong data-i18n="about.principle1">从变化中学习</strong></div>
+          <div><span>02</span><strong data-i18n="about.principle2">在结构中解释</strong></div>
+          <div><span>03</span><strong data-i18n="about.principle3">向未知处泛化</strong></div>
+        </div>
+      </section>
+
+      <section class="research section-pad" id="research">
+        <div class="section-index light reveal">02 / <span data-i18n="section.research">RESEARCH</span></div>
+        <div class="research-head">
+          <h2 class="display-heading light reveal" data-i18n-html="research.title">我们的<span>研究方向</span></h2>
+          <p class="research-intro reveal" data-i18n="research.intro">
+            我们围绕表征、变化与结构展开基础研究，并关注这些原则如何让智能系统在开放环境中保持可靠。
+          </p>
+        </div>
+
+        <div class="research-list">
+          <article class="research-item reveal" tabindex="0">
+            <div class="research-number">R / 01</div>
+            <div class="research-name">
+              <h3 data-i18n="research.r1.title">变化下的不变学习</h3>
+              <p>Invariant Learning under Change</p>
+            </div>
+            <p class="research-desc" data-i18n="research.r1.desc">识别跨环境保持稳定的机制，让模型在分布迁移与未知条件下依然成立。</p>
+            <div class="research-glyph glyph-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
+          </article>
+
+          <article class="research-item reveal" tabindex="0">
+            <div class="research-number">R / 02</div>
+            <div class="research-name">
+              <h3 data-i18n="research.r2.title">等价表征与对齐</h3>
+              <p>Equivalent Representation & Alignment</p>
+            </div>
+            <p class="research-desc" data-i18n="research.r2.desc">寻找不同模态、视角和坐标系之间可转换、可比较的共同表示。</p>
+            <div class="research-glyph glyph-equal" aria-hidden="true"><i></i><i></i></div>
+          </article>
+
+          <article class="research-item reveal" tabindex="0">
+            <div class="research-number">R / 03</div>
+            <div class="research-name">
+              <h3 data-i18n="research.r3.title">结构化世界建模</h3>
+              <p>Structured World Models</p>
+            </div>
+            <p class="research-desc" data-i18n="research.r3.desc">从复杂观测中恢复可组合的关系、动力学与因果结构。</p>
+            <div class="research-glyph glyph-nodes" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="ideas section-pad" id="ideas">
+        <div class="section-index reveal">03 / <span data-i18n="section.ideas">QUESTIONS</span></div>
+        <div class="ideas-header">
+          <h2 class="display-heading reveal" data-i18n-html="ideas.title">问题驱动<span>研究</span></h2>
+          <p class="reveal" data-i18n="ideas.intro">当前持续追问的三个方向。</p>
+        </div>
+
+        <div class="question-grid">
+          <article class="question-card reveal">
+            <div class="card-top"><span>QUESTION 01</span><span class="card-mark">↗</span></div>
+            <h3 data-i18n="ideas.q1">当训练环境消失，模型凭什么继续相信自己的判断？</h3>
+            <p data-i18n="ideas.q1meta">Generalization · Robustness · Causality</p>
+          </article>
+          <article class="question-card reveal">
+            <div class="card-top"><span>QUESTION 02</span><span class="card-mark">↗</span></div>
+            <h3 data-i18n="ideas.q2">语言、图像与行动，是否共享同一种潜在结构？</h3>
+            <p data-i18n="ideas.q2meta">Multimodality · Alignment · Geometry</p>
+          </article>
+          <article class="question-card reveal">
+            <div class="card-top"><span>QUESTION 03</span><span class="card-mark">↗</span></div>
+            <h3 data-i18n="ideas.q3">我们能否让智能系统知道，什么应该变，什么不应该？</h3>
+            <p data-i18n="ideas.q3meta">Equivariance · Dynamics · Control</p>
+          </article>
+        </div>
+
+        <a class="publication-link reveal" href="#contact">
+          <span data-i18n="ideas.papers">论文与开源成果将持续更新</span>
+          <span class="publication-arrow">↗</span>
+        </a>
+      </section>
+
+      <section class="people section-pad" id="people">
+        <div class="section-index light reveal">04 / <span data-i18n="section.people">PEOPLE</span></div>
+        <div class="people-layout">
+          <div>
+            <h2 class="display-heading light reveal" data-i18n-html="people.title">不同背景，<br />共同<span>探索。</span></h2>
+          </div>
+          <div class="people-copy reveal">
+            <p data-i18n="people.body">我们相信，重要的问题往往生长在学科边界。团队欢迎来自机器学习、数学、认知科学与复杂系统等不同背景的研究者。</p>
+            <a class="text-link light-link" href="#contact">
+              <span data-i18n="people.cta">认识团队 / 加入我们</span>
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="values-strip reveal">
+          <div><span data-i18n="people.v1small">WE VALUE</span><strong data-i18n="people.v1">长期问题</strong></div>
+          <div><span data-i18n="people.v2small">WE PRACTICE</span><strong data-i18n="people.v2">开放讨论</strong></div>
+          <div><span data-i18n="people.v3small">WE SEEK</span><strong data-i18n="people.v3">清晰洞见</strong></div>
+        </div>
+      </section>
+
+      <section class="contact section-pad" id="contact">
+        <div class="contact-orbit orbit-a"></div>
+        <div class="contact-orbit orbit-b"></div>
+        <p class="eyebrow reveal" data-i18n="contact.eyebrow">WORK WITH US</p>
+        <h2 class="reveal" data-i18n-html="contact.title">和我们一起，<br /><span>探索不变性</span></h2>
+        <p class="contact-note reveal" data-i18n="contact.note">我们期待研究合作、学术交流，以及对这些问题同样好奇的新成员。</p>
+        <a class="contact-button reveal" href="mailto:hello@equiva-lab.org">
+          <span data-i18n="contact.cta">与我们联系</span>
+          <span>↗</span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand footer-brand" href="#top">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="12.25"></circle>
+          <path d="M9 12.25h14M9 19.75h14"></path>
+        </svg>
+        <span>Equiva Lab</span>
+      </a>
+      <p data-i18n="footer.tagline">INVARIANCE · EQUIVALENCE · REPRESENTATION</p>
+      <p>© <span data-year></span> Equiva Lab</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
