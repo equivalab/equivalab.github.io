@@ -114,6 +114,7 @@ const translations = {
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
+const navLinks = [...nav.querySelectorAll("a")];
 const languageToggle = document.querySelector("[data-language-toggle]");
 let currentLanguage = "zh";
 
@@ -136,9 +137,39 @@ menuToggle.addEventListener("click", () => {
   document.body.classList.toggle("menu-open", willOpen);
 });
 
-nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+navLinks.forEach((link) => link.addEventListener("click", closeMenu));
 window.addEventListener("scroll", updateHeader, { passive: true });
 updateHeader();
+
+let activeNavFrame = 0;
+
+function updateActiveNavigation() {
+  const marker = window.scrollY + window.innerHeight * 0.38;
+  let activeLink = null;
+
+  navLinks.forEach((link) => {
+    const section = document.querySelector(link.hash);
+    if (section && section.offsetTop <= marker) activeLink = link;
+  });
+
+  navLinks.forEach((link) => {
+    const isActive = link === activeLink;
+    link.classList.toggle("is-active", isActive);
+    if (isActive) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+
+  activeNavFrame = 0;
+}
+
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!activeNavFrame) activeNavFrame = requestAnimationFrame(updateActiveNavigation);
+  },
+  { passive: true }
+);
+updateActiveNavigation();
 
 languageToggle.addEventListener("click", () => {
   currentLanguage = currentLanguage === "zh" ? "en" : "zh";
@@ -184,6 +215,7 @@ window.addEventListener("load", () => {
 
 const canvas = document.getElementById("equivalence-canvas");
 const context = canvas.getContext("2d");
+const heroVisual = canvas.closest(".hero-visual");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let canvasWidth = 0;
 let canvasHeight = 0;
@@ -296,6 +328,19 @@ canvas.addEventListener("pointermove", (event) => {
 canvas.addEventListener("pointerleave", () => {
   pointerX = 0;
   pointerY = 0;
+});
+
+heroVisual.addEventListener("pointermove", (event) => {
+  const rect = heroVisual.getBoundingClientRect();
+  const x = Math.max(45, Math.min(96, ((event.clientX - rect.left) / rect.width) * 100));
+  const y = Math.max(4, Math.min(96, ((event.clientY - rect.top) / rect.height) * 100));
+  heroVisual.style.setProperty("--mx", `${x}%`);
+  heroVisual.style.setProperty("--my", `${y}%`);
+});
+
+heroVisual.addEventListener("pointerleave", () => {
+  heroVisual.style.removeProperty("--mx");
+  heroVisual.style.removeProperty("--my");
 });
 
 window.addEventListener("resize", () => {
