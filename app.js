@@ -1,9 +1,10 @@
 const translations = {
   zh: {
+    "nav.home": "首页",
     "nav.about": "关于",
     "nav.research": "研究",
-    "nav.ideas": "议题",
-    "nav.people": "团队",
+    "nav.results": "成果",
+    "nav.news": "新闻",
     "nav.join": "加入我们",
     "hero.eyebrow": "EQUIVA LAB · RESEARCH GROUP",
     "hero.title": "研究变化之中的<br /><span>不变性</span>",
@@ -28,20 +29,20 @@ const translations = {
     "research.r2.desc": "寻找不同模态、视角和坐标系之间可转换、可比较的共同表示。",
     "research.r3.title": "结构化世界建模",
     "research.r3.desc": "从复杂观测中恢复可组合的关系、动力学与因果结构。",
-    "section.ideas": "QUESTIONS",
-    "ideas.title": "问题驱动<span>研究</span>",
-    "ideas.intro": "当前持续追问的三个方向。",
-    "ideas.q1": "当训练环境消失，模型凭什么继续相信自己的判断？",
+    "section.ideas": "RESULTS",
+    "ideas.title": "研究<span>成果</span>",
+    "ideas.intro": "围绕三个核心方向持续推进。",
+    "ideas.q1": "稳健泛化与因果不变性",
     "ideas.q1meta": "Generalization · Robustness · Causality",
-    "ideas.q2": "语言、图像与行动，是否共享同一种潜在结构？",
+    "ideas.q2": "多模态等价表征",
     "ideas.q2meta": "Multimodality · Alignment · Geometry",
-    "ideas.q3": "我们能否让智能系统知道，什么应该变，什么不应该？",
+    "ideas.q3": "等变建模与结构学习",
     "ideas.q3meta": "Equivariance · Dynamics · Control",
-    "ideas.papers": "论文与开源成果将持续更新",
+    "ideas.papers": "查看全部论文、项目与开源成果",
     "section.people": "PEOPLE",
     "people.title": "不同背景，<br />共同<span>探索。</span>",
     "people.body": "我们相信，重要的问题往往生长在学科边界。团队欢迎来自机器学习、数学、认知科学与复杂系统等不同背景的研究者。",
-    "people.cta": "认识团队 / 加入我们",
+    "people.cta": "认识团队",
     "people.v1small": "WE VALUE",
     "people.v1": "长期问题",
     "people.v2small": "WE PRACTICE",
@@ -51,14 +52,15 @@ const translations = {
     "contact.eyebrow": "WORK WITH US",
     "contact.title": "和我们一起，<br /><span>探索不变性</span>",
     "contact.note": "我们期待研究合作、学术交流，以及对这些问题同样好奇的新成员。",
-    "contact.cta": "与我们联系",
+    "contact.cta": "查看加入方式",
     "footer.tagline": "INVARIANCE · EQUIVALENCE · REPRESENTATION"
   },
   en: {
+    "nav.home": "Home",
     "nav.about": "About",
     "nav.research": "Research",
-    "nav.ideas": "Questions",
-    "nav.people": "People",
+    "nav.results": "Results",
+    "nav.news": "News",
     "nav.join": "Join Us",
     "hero.eyebrow": "EQUIVA LAB · RESEARCH GROUP",
     "hero.title": "Studying invariance<br /><span>through change.</span>",
@@ -83,20 +85,20 @@ const translations = {
     "research.r2.desc": "Find common representations that are transformable and comparable across modalities, viewpoints, and coordinate systems.",
     "research.r3.title": "Structured World Models",
     "research.r3.desc": "Recover compositional relationships, dynamics, and causal structure from complex observations.",
-    "section.ideas": "QUESTIONS",
-    "ideas.title": "Questions drive <span>research</span>",
-    "ideas.intro": "Three questions that keep us moving.",
-    "ideas.q1": "When the training environment disappears, why should a model still trust its judgment?",
+    "section.ideas": "RESULTS",
+    "ideas.title": "Research <span>results</span>",
+    "ideas.intro": "Progress across three core directions.",
+    "ideas.q1": "Robust Generalization & Causal Invariance",
     "ideas.q1meta": "Generalization · Robustness · Causality",
-    "ideas.q2": "Do language, images, and actions share a common latent structure?",
+    "ideas.q2": "Multimodal Equivalent Representations",
     "ideas.q2meta": "Multimodality · Alignment · Geometry",
-    "ideas.q3": "Can intelligent systems know what should change—and what should not?",
+    "ideas.q3": "Equivariant Modeling & Structure Learning",
     "ideas.q3meta": "Equivariance · Dynamics · Control",
-    "ideas.papers": "Papers and open-source work coming soon",
+    "ideas.papers": "View all papers, projects, and open-source work",
     "section.people": "PEOPLE",
     "people.title": "Different backgrounds.<br />Shared <span>exploration.</span>",
     "people.body": "We believe important questions often grow at disciplinary boundaries. We welcome researchers from machine learning, mathematics, cognitive science, complex systems, and beyond.",
-    "people.cta": "Meet the team / Join us",
+    "people.cta": "Meet the team",
     "people.v1small": "WE VALUE",
     "people.v1": "Long-term questions",
     "people.v2small": "WE PRACTICE",
@@ -106,7 +108,7 @@ const translations = {
     "contact.eyebrow": "WORK WITH US",
     "contact.title": "Join us to<br /><span>explore invariance.</span>",
     "contact.note": "We welcome research collaborations, academic exchange, and new members who are equally curious about these questions.",
-    "contact.cta": "Start a conversation",
+    "contact.cta": "Explore opportunities",
     "footer.tagline": "INVARIANCE · EQUIVALENCE · REPRESENTATION"
   }
 };
@@ -117,6 +119,11 @@ const nav = document.querySelector("[data-nav]");
 const navLinks = [...nav.querySelectorAll("a")];
 const languageToggle = document.querySelector("[data-language-toggle]");
 let currentLanguage = "zh";
+try {
+  currentLanguage = localStorage.getItem("equiva-language") || "zh";
+} catch {
+  currentLanguage = "zh";
+}
 
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -145,12 +152,14 @@ let activeNavFrame = 0;
 
 function updateActiveNavigation() {
   const marker = window.scrollY + window.innerHeight * 0.38;
-  let activeLink = null;
+  const currentPage = document.body.dataset.page || "home";
+  let activeLink = navLinks.find((link) => link.dataset.pageLink === currentPage) || null;
 
-  navLinks.forEach((link) => {
-    const section = document.querySelector(link.hash);
-    if (section && section.offsetTop <= marker) activeLink = link;
-  });
+  if (currentPage === "home") {
+    const researchLink = navLinks.find((link) => link.dataset.pageLink === "research");
+    const researchSection = document.querySelector("#research");
+    if (researchLink && researchSection && researchSection.offsetTop <= marker) activeLink = researchLink;
+  }
 
   navLinks.forEach((link) => {
     const isActive = link === activeLink;
@@ -171,8 +180,8 @@ window.addEventListener(
 );
 updateActiveNavigation();
 
-languageToggle.addEventListener("click", () => {
-  currentLanguage = currentLanguage === "zh" ? "en" : "zh";
+function applyLanguage(language) {
+  currentLanguage = language;
   document.documentElement.lang = currentLanguage === "zh" ? "zh-CN" : "en";
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
@@ -185,11 +194,26 @@ languageToggle.addEventListener("click", () => {
     if (translations[currentLanguage][key]) element.innerHTML = translations[currentLanguage][key];
   });
 
+  document.querySelectorAll("[data-zh][data-en]").forEach((element) => {
+    element.textContent = element.dataset[currentLanguage];
+  });
+
   const labels = languageToggle.querySelectorAll("span");
   labels[0].classList.toggle("is-active", currentLanguage === "zh");
   labels[1].classList.toggle("is-active", currentLanguage === "en");
   languageToggle.setAttribute("aria-label", currentLanguage === "zh" ? "Switch to English" : "切换到中文");
+  try {
+    localStorage.setItem("equiva-language", currentLanguage);
+  } catch {
+    // Language switching still works when storage is unavailable.
+  }
+}
+
+languageToggle.addEventListener("click", () => {
+  applyLanguage(currentLanguage === "zh" ? "en" : "zh");
 });
+
+applyLanguage(currentLanguage);
 
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
 
@@ -214,6 +238,7 @@ window.addEventListener("load", () => {
 });
 
 const canvas = document.getElementById("equivalence-canvas");
+if (canvas) {
 const context = canvas.getContext("2d");
 const heroVisual = canvas.closest(".hero-visual");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -350,3 +375,4 @@ window.addEventListener("resize", () => {
 resizeCanvas();
 cancelAnimationFrame(frame);
 drawFrame();
+}

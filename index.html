@@ -13,11 +13,11 @@
     <link rel="stylesheet" href="styles.css" />
     <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
   </head>
-  <body>
+  <body data-page="home">
     <a class="skip-link" href="#main">跳至主要内容</a>
 
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="Equiva Lab 首页">
+      <a class="brand" href="index.html" aria-label="Equiva Lab 首页">
         <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
           <circle cx="16" cy="16" r="12.25"></circle>
           <path d="M9 12.25h14M9 19.75h14"></path>
@@ -30,11 +30,12 @@
       </button>
 
       <nav class="site-nav" aria-label="主导航" data-nav>
-        <a href="#about" data-i18n="nav.about">关于</a>
-        <a href="#research" data-i18n="nav.research">研究</a>
-        <a href="#ideas" data-i18n="nav.ideas">议题</a>
-        <a href="#people" data-i18n="nav.people">团队</a>
-        <a href="#contact" data-i18n="nav.join">加入我们</a>
+        <a href="index.html" data-page-link="home" data-i18n="nav.home">首页</a>
+        <a href="#research" data-page-link="research" data-i18n="nav.research">研究</a>
+        <a href="results.html" data-page-link="results" data-i18n="nav.results">成果</a>
+        <a href="team.html" data-page-link="team" data-i18n="nav.people">团队</a>
+        <a href="news.html" data-page-link="news" data-i18n="nav.news">新闻</a>
+        <a href="join.html" data-page-link="join" data-i18n="nav.join">加入我们</a>
       </nav>
 
       <button class="language-toggle" type="button" aria-label="Switch to English" data-language-toggle>
@@ -145,32 +146,32 @@
       </section>
 
       <section class="ideas section-pad" id="ideas">
-        <div class="section-index reveal">03 / <span data-i18n="section.ideas">QUESTIONS</span></div>
+        <div class="section-index reveal">03 / <span data-i18n="section.ideas">RESULTS</span></div>
         <div class="ideas-header">
-          <h2 class="display-heading reveal" data-i18n-html="ideas.title">问题驱动<span>研究</span></h2>
-          <p class="reveal" data-i18n="ideas.intro">当前持续追问的三个方向。</p>
+          <h2 class="display-heading reveal" data-i18n-html="ideas.title">研究<span>成果</span></h2>
+          <p class="reveal" data-i18n="ideas.intro">围绕三个核心方向持续推进。</p>
         </div>
 
         <div class="question-grid">
           <article class="question-card reveal">
-            <div class="card-top"><span>QUESTION 01</span><span class="card-mark">↗</span></div>
-            <h3 data-i18n="ideas.q1">当训练环境消失，模型凭什么继续相信自己的判断？</h3>
+            <div class="card-top"><span>RESULT 01</span><span class="card-mark">↗</span></div>
+            <h3 data-i18n="ideas.q1">稳健泛化与因果不变性</h3>
             <p data-i18n="ideas.q1meta">Generalization · Robustness · Causality</p>
           </article>
           <article class="question-card reveal">
-            <div class="card-top"><span>QUESTION 02</span><span class="card-mark">↗</span></div>
-            <h3 data-i18n="ideas.q2">语言、图像与行动，是否共享同一种潜在结构？</h3>
+            <div class="card-top"><span>RESULT 02</span><span class="card-mark">↗</span></div>
+            <h3 data-i18n="ideas.q2">多模态等价表征</h3>
             <p data-i18n="ideas.q2meta">Multimodality · Alignment · Geometry</p>
           </article>
           <article class="question-card reveal">
-            <div class="card-top"><span>QUESTION 03</span><span class="card-mark">↗</span></div>
-            <h3 data-i18n="ideas.q3">我们能否让智能系统知道，什么应该变，什么不应该？</h3>
+            <div class="card-top"><span>RESULT 03</span><span class="card-mark">↗</span></div>
+            <h3 data-i18n="ideas.q3">等变建模与结构学习</h3>
             <p data-i18n="ideas.q3meta">Equivariance · Dynamics · Control</p>
           </article>
         </div>
 
-        <a class="publication-link reveal" href="#contact">
-          <span data-i18n="ideas.papers">论文与开源成果将持续更新</span>
+        <a class="publication-link reveal" href="results.html">
+          <span data-i18n="ideas.papers">查看全部论文、项目与开源成果</span>
           <span class="publication-arrow">↗</span>
         </a>
       </section>
@@ -183,8 +184,8 @@
           </div>
           <div class="people-copy reveal">
             <p data-i18n="people.body">我们相信，重要的问题往往生长在学科边界。团队欢迎来自机器学习、数学、认知科学与复杂系统等不同背景的研究者。</p>
-            <a class="text-link light-link" href="#contact">
-              <span data-i18n="people.cta">认识团队 / 加入我们</span>
+            <a class="text-link light-link" href="team.html">
+              <span data-i18n="people.cta">认识团队</span>
               <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5" /></svg>
             </a>
           </div>
@@ -203,8 +204,8 @@
         <p class="eyebrow reveal" data-i18n="contact.eyebrow">WORK WITH US</p>
         <h2 class="reveal" data-i18n-html="contact.title">和我们一起，<br /><span>探索不变性</span></h2>
         <p class="contact-note reveal" data-i18n="contact.note">我们期待研究合作、学术交流，以及对这些问题同样好奇的新成员。</p>
-        <a class="contact-button reveal" href="mailto:hello@equiva-lab.org">
-          <span data-i18n="contact.cta">与我们联系</span>
+        <a class="contact-button reveal" href="join.html">
+          <span data-i18n="contact.cta">查看加入方式</span>
           <span>↗</span>
         </a>
       </section>

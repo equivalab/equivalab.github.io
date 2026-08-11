@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://equivalab.github.io/sitemap.xml
