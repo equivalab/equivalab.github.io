@@ -156,9 +156,18 @@ function updateActiveNavigation() {
   let activeLink = navLinks.find((link) => link.dataset.pageLink === currentPage) || null;
 
   if (currentPage === "home") {
-    const researchLink = navLinks.find((link) => link.dataset.pageLink === "research");
-    const researchSection = document.querySelector("#research");
-    if (researchLink && researchSection && researchSection.offsetTop <= marker) activeLink = researchLink;
+    const sectionMap = [
+      ["research", "#research"],
+      ["results", "#ideas"],
+      ["team", "#people"],
+      ["news", ".home-news"],
+      ["join", "#contact"]
+    ];
+    sectionMap.forEach(([page, selector]) => {
+      const section = document.querySelector(selector);
+      const link = navLinks.find((item) => item.dataset.pageLink === page);
+      if (link && section && section.offsetTop <= marker) activeLink = link;
+    });
   }
 
   navLinks.forEach((link) => {
@@ -213,9 +222,86 @@ languageToggle.addEventListener("click", () => {
   applyLanguage(currentLanguage === "zh" ? "en" : "zh");
 });
 
+function renderSiteFooter() {
+  const footer = document.querySelector("[data-site-footer]");
+  if (!footer) return;
+
+  footer.innerHTML = `
+    <div class="footer-main">
+      <div class="footer-identity">
+        <a class="brand footer-brand" href="index.html">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12.25"></circle><path d="M9 12.25h14M9 19.75h14"></path></svg>
+          <span>Equiva Lab</span>
+        </a>
+        <p data-zh="研究变化之中的不变性，以及不同观测背后的等价表征。" data-en="Studying invariance through change and equivalent representations across observations.">研究变化之中的不变性，以及不同观测背后的等价表征。</p>
+      </div>
+      <div class="footer-links">
+        <div><span data-zh="研究" data-en="Research">研究</span><a href="index.html#research" data-zh="研究方向" data-en="Directions">研究方向</a><a href="results.html" data-zh="研究成果" data-en="Results">研究成果</a></div>
+        <div><span data-zh="实验室" data-en="Lab">实验室</span><a href="team.html" data-zh="团队" data-en="Team">团队</a><a href="news.html" data-zh="新闻" data-en="News">新闻</a></div>
+        <div><span data-zh="联系" data-en="Connect">联系</span><a href="join.html" data-zh="加入我们" data-en="Join us">加入我们</a><a href="mailto:hello@equiva-lab.org" data-zh="发送邮件" data-en="Email">发送邮件</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>INVARIANCE · EQUIVALENCE · REPRESENTATION</p>
+      <p>© <span data-year></span> Equiva Lab</p>
+    </div>`;
+}
+
+function renderResultsArchive() {
+  const list = document.querySelector("[data-results-list]");
+  if (!list) return;
+
+  const results = Array.isArray(window.EQUIVA_RESULTS) ? window.EQUIVA_RESULTS : [];
+  const empty = document.querySelector("[data-results-empty]");
+  empty?.toggleAttribute("hidden", results.length > 0);
+
+  results.forEach((result) => {
+    const article = document.createElement("article");
+    article.className = "result-entry reveal";
+
+    const meta = document.createElement("div");
+    meta.className = "result-entry-meta";
+    const year = document.createElement("span");
+    year.textContent = result.year || "—";
+    const type = document.createElement("span");
+    type.textContent = result.type || "RESULT";
+    meta.append(year, type);
+
+    const content = document.createElement("div");
+    content.className = "result-entry-content";
+    const title = document.createElement("h3");
+    title.dataset.zh = result.titleZh || result.titleEn || "";
+    title.dataset.en = result.titleEn || result.titleZh || "";
+    title.textContent = currentLanguage === "zh" ? title.dataset.zh : title.dataset.en;
+    const details = document.createElement("p");
+    details.textContent = [result.authors, result.venue].filter(Boolean).join(" · ");
+    content.append(title, details);
+
+    const links = document.createElement("div");
+    links.className = "result-entry-links";
+    (result.links || []).forEach((item) => {
+      const anchor = document.createElement("a");
+      anchor.href = item.url;
+      anchor.textContent = `${item.label} ↗`;
+      if (/^https?:/.test(item.url)) {
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+      }
+      links.append(anchor);
+    });
+
+    article.append(meta, content, links);
+    list.append(article);
+  });
+}
+
+renderSiteFooter();
+renderResultsArchive();
 applyLanguage(currentLanguage);
 
-document.querySelector("[data-year]").textContent = new Date().getFullYear();
+document.querySelectorAll("[data-year]").forEach((element) => {
+  element.textContent = new Date().getFullYear();
+});
 
 const revealObserver = new IntersectionObserver(
   (entries) => {

@@ -41,19 +41,24 @@
         </div>
       </section>
 
-      <section class="page-section page-shell">
+      <section class="page-section page-shell results-archive">
         <div class="page-section-heading reveal">
-          <div><p class="page-kicker">PUBLICATIONS & PROJECTS</p><h2 data-zh="成果正在持续形成" data-en="Work in progress">成果正在持续形成</h2></div>
-          <p data-zh="真实论文、项目与代码信息将在确认后陆续公开。这里不会使用示例论文或虚构数据。" data-en="Verified publications, projects, and code will be added as they become available. No placeholder papers or fabricated metrics are shown.">真实论文、项目与代码信息将在确认后陆续公开。这里不会使用示例论文或虚构数据。</p>
+          <div><p class="page-kicker">PUBLICATIONS & PROJECTS</p><h2 data-zh="成果档案" data-en="Research archive">成果档案</h2></div>
+          <p data-zh="按正式发表或发布信息，记录论文、研究项目与开放资源。" data-en="An archive of papers, research projects, and open resources based on their official publication or release information.">按正式发表或发布信息，记录论文、研究项目与开放资源。</p>
         </div>
 
-        <div class="update-panel reveal">
-          <div class="update-symbol">↗</div>
+        <div class="archive-bar reveal">
+          <span>ARCHIVE / ALL YEARS</span>
+          <span data-zh="由团队维护 · 持续更新" data-en="Maintained by the lab · Updated continuously">由团队维护 · 持续更新</span>
+        </div>
+        <div class="results-index" data-results-list></div>
+        <div class="archive-empty reveal" data-results-empty>
+          <div class="archive-symbol">≡</div>
           <div>
-            <span data-zh="内容更新中" data-en="UPDATES IN PROGRESS">内容更新中</span>
-            <h3 data-zh="论文、项目与开源成果将在此统一发布" data-en="Papers, projects, and open-source work will be published here">论文、项目与开源成果将在此统一发布</h3>
+            <span>RESEARCH ARCHIVE</span>
+            <h3 data-zh="首批成果将在确认后发布" data-en="The first verified results will appear here">首批成果将在确认后发布</h3>
+            <p data-zh="本页仅展示由 Equiva Lab 正式维护的成果信息。" data-en="This page only displays results officially maintained by Equiva Lab.">本页仅展示由 Equiva Lab 正式维护的成果信息。</p>
           </div>
-          <a href="mailto:hello@equiva-lab.org" data-zh="提交成果信息" data-en="Submit an update">提交成果信息</a>
         </div>
       </section>
 
@@ -81,11 +86,8 @@
       </section>
     </main>
 
-    <footer class="site-footer subpage-footer">
-      <a class="brand footer-brand" href="index.html"><svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12.25"></circle><path d="M9 12.25h14M9 19.75h14"></path></svg><span>Equiva Lab</span></a>
-      <p data-i18n="footer.tagline">INVARIANCE · EQUIVALENCE · REPRESENTATION</p>
-      <p>© <span data-year></span> Equiva Lab</p>
-    </footer>
+    <footer class="site-footer subpage-footer" data-site-footer></footer>
+    <script src="content/results.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
