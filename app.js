@@ -238,7 +238,7 @@ function renderSiteFooter() {
       <div class="footer-links">
         <div><span data-zh="研究" data-en="Research">研究</span><a href="index.html#research" data-zh="研究方向" data-en="Directions">研究方向</a><a href="results.html" data-zh="研究成果" data-en="Results">研究成果</a></div>
         <div><span data-zh="实验室" data-en="Lab">实验室</span><a href="team.html" data-zh="团队" data-en="Team">团队</a><a href="news.html" data-zh="新闻" data-en="News">新闻</a></div>
-        <div><span data-zh="联系" data-en="Connect">联系</span><a href="join.html" data-zh="加入我们" data-en="Join us">加入我们</a><a href="mailto:hello@equiva-lab.org" data-zh="发送邮件" data-en="Email">发送邮件</a></div>
+        <div><span data-zh="联系" data-en="Connect">联系</span><a href="join.html" data-zh="加入我们" data-en="Join us">加入我们</a><a href="assessment.html" data-zh="招新考核" data-en="Recruitment">招新考核</a><a href="mailto:hello@equiva-lab.org" data-zh="发送邮件" data-en="Email">发送邮件</a></div>
       </div>
     </div>
     <div class="footer-bottom">
