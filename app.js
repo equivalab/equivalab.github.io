@@ -127,6 +127,17 @@ try {
   currentLanguage = "zh";
 }
 
+function createIcon(name, className = "icon") {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+  svg.setAttribute("class", className);
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  use.setAttribute("href", `assets/icons.svg#${name}`);
+  svg.append(use);
+  return svg;
+}
+
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 24);
 }
@@ -238,9 +249,9 @@ function renderSiteFooter() {
         <p data-zh="研究变化之中的不变性，以及不同观测背后的等价表征。" data-en="Studying invariance through change and equivalent representations across observations.">研究变化之中的不变性，以及不同观测背后的等价表征。</p>
       </div>
       <div class="footer-links">
-        <div><span data-zh="研究" data-en="Research">研究</span><a href="index.html#research" data-zh="研究方向" data-en="Directions">研究方向</a><a href="results.html" data-zh="研究成果" data-en="Results">研究成果</a></div>
-        <div><span data-zh="实验室" data-en="Lab">实验室</span><a href="team.html" data-zh="团队" data-en="Team">团队</a><a href="news.html" data-zh="新闻" data-en="News">新闻</a></div>
-        <div><span data-zh="加入" data-en="Join">加入</span><a href="join.html" data-zh="加入我们" data-en="Join us">加入我们</a><a href="join.html#assessment" data-zh="招新考核" data-en="Recruitment">招新考核</a></div>
+        <div><span class="footer-section-title"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#flask"></use></svg><i data-zh="研究" data-en="Research">研究</i></span><a href="index.html#research" data-zh="研究方向" data-en="Directions">研究方向</a><a href="results.html" data-zh="研究成果" data-en="Results">研究成果</a></div>
+        <div><span class="footer-section-title"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#users"></use></svg><i data-zh="实验室" data-en="Lab">实验室</i></span><a href="team.html" data-zh="团队" data-en="Team">团队</a><a href="news.html" data-zh="新闻" data-en="News">新闻</a></div>
+        <div><span class="footer-section-title"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#user-plus"></use></svg><i data-zh="加入" data-en="Join">加入</i></span><a href="join.html" data-zh="加入我们" data-en="Join us">加入我们</a><a href="join.html#assessment" data-zh="招新考核" data-en="Recruitment">招新考核</a></div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -284,7 +295,9 @@ function renderResultsArchive() {
     (result.links || []).forEach((item) => {
       const anchor = document.createElement("a");
       anchor.href = item.url;
-      anchor.textContent = `${item.label} ↗`;
+      const label = document.createElement("span");
+      label.textContent = item.label;
+      anchor.append(label, createIcon("arrow-up-right"));
       if (/^https?:/.test(item.url)) {
         anchor.target = "_blank";
         anchor.rel = "noopener noreferrer";
