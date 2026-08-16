@@ -1583,8 +1583,7 @@ button:focus-visible,
   margin-bottom: 44px;
 }
 
-.member-update > div:last-child > span,
-.email-panel > span {
+.member-update > div:last-child > span {
   color: var(--muted);
   font-size: 10px;
   letter-spacing: 0.09em;
@@ -1691,44 +1690,6 @@ button:focus-visible,
 .news-empty span { font-size: 9px; letter-spacing: 0.1em; }
 .news-empty p { margin: 10px 0 0; font-size: 14px; }
 
-.opportunity-grid .feature-card:nth-child(1) { background: #edf0fa; }
-.opportunity-grid .feature-card:nth-child(2) { background: #ebf4f2; }
-.opportunity-grid .feature-card:nth-child(3) { background: #f2f0ed; }
-
-.process-list {
-  border-top: 1px solid var(--line);
-}
-
-.process-item {
-  display: grid;
-  grid-template-columns: 0.25fr 0.8fr 1.25fr;
-  gap: 38px;
-  align-items: center;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.process-item > span { color: var(--muted); font-size: 12px; }
-.process-item h3 { margin: 0; font-size: 22px; font-weight: 500; letter-spacing: -0.025em; }
-.process-item p { max-width: 620px; margin: 0; color: var(--text); font-size: 14px; line-height: 1.75; }
-
-.email-panel {
-  display: grid;
-  grid-template-columns: 0.25fr 1.35fr 0.65fr;
-  gap: 38px;
-  align-items: center;
-  margin-top: 42px;
-  padding: 34px;
-  border-radius: var(--radius-md);
-  color: #fff;
-  background: var(--ink);
-}
-
-.email-panel > span { color: rgba(255, 255, 255, 0.5); }
-.email-panel a { font-size: clamp(22px, 2.8vw, 34px); font-weight: 500; letter-spacing: -0.035em; }
-.email-panel a b { font-weight: 400; }
-.email-panel p { margin: 0; color: rgba(255, 255, 255, 0.58); font-size: 12px; line-height: 1.65; }
-
 .subpage-footer {
   margin-top: 40px;
   border-top: 1px solid var(--line);
@@ -1743,7 +1704,6 @@ button:focus-visible,
   .feature-grid { grid-template-columns: 1fr; }
   .feature-card { min-height: 250px; }
   .news-item { grid-template-columns: 0.45fr 1.4fr 30px; gap: 25px; }
-  .email-panel { grid-template-columns: 1fr; gap: 18px; }
 }
 
 @media (max-width: 700px) {
@@ -1772,10 +1732,6 @@ button:focus-visible,
   .news-item { grid-template-columns: 1fr 26px; gap: 20px; padding: 26px 4px; }
   .news-meta { grid-column: 1 / -1; }
   .news-copy h3 { font-size: 23px; }
-  .process-item { grid-template-columns: 40px 1fr; gap: 14px; padding: 28px 0; }
-  .process-item p { grid-column: 2; }
-  .email-panel { padding: 26px 22px; }
-  .email-panel a { font-size: 22px; overflow-wrap: anywhere; }
   .subpage-footer { margin-top: 20px; }
 }
 
@@ -2058,8 +2014,7 @@ button:focus-visible,
     linear-gradient(135deg, #f2f4f9, #eef4f2);
 }
 
-.recruitment-callout-meta,
-.assessment-status > div {
+.recruitment-callout-meta {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -2131,94 +2086,6 @@ button:focus-visible,
 .dark-button:hover { background: #303238; }
 
 .assessment-page { padding-bottom: 70px; }
-
-.assessment-hero {
-  min-height: 560px;
-  background:
-    radial-gradient(circle at 84% 22%, rgba(169, 198, 255, 0.78), transparent 32%),
-    radial-gradient(circle at 65% 104%, rgba(166, 229, 213, 0.66), transparent 34%),
-    #eef1f5;
-}
-
-.assessment-primary-button {
-  color: #fff;
-  background: var(--ink);
-}
-
-.assessment-art { min-height: 520px; }
-
-.assessment-orbit {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(88%, 490px);
-  aspect-ratio: 1.15;
-  transform: translate(-50%, -50%);
-}
-
-.assessment-orbit::before,
-.assessment-orbit::after,
-.assessment-orbit i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 1px solid rgba(29, 29, 31, 0.14);
-  border-radius: 50%;
-  content: "";
-  transform: translate(-50%, -50%);
-}
-
-.assessment-orbit::before { width: 100%; aspect-ratio: 1.8; transform: translate(-50%, -50%) rotate(18deg); }
-.assessment-orbit::after { width: 79%; aspect-ratio: 1.65; transform: translate(-50%, -50%) rotate(-28deg); }
-.assessment-orbit i:nth-child(1) { width: 54%; aspect-ratio: 1; background: rgba(255, 255, 255, 0.24); }
-.assessment-orbit i:nth-child(2) { width: 30%; aspect-ratio: 1; border-style: dashed; }
-
-.assessment-orbit strong,
-.assessment-orbit b {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  font-size: clamp(45px, 6vw, 78px);
-  font-weight: 300;
-  letter-spacing: -0.07em;
-  line-height: 1;
-  transform: translateY(-52%);
-}
-
-.assessment-orbit strong { left: 24%; }
-.assessment-orbit b { right: 24%; color: rgba(29, 29, 31, 0.24); }
-
-.assessment-status {
-  min-height: 86px;
-  display: grid;
-  grid-template-columns: 0.55fr 1.2fr auto;
-  gap: 36px;
-  align-items: center;
-  margin-top: 20px;
-  padding: 20px 28px;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.72);
-}
-
-.assessment-status > div b { color: var(--ink); font-weight: 500; }
-
-.assessment-status p {
-  margin: 0;
-  color: var(--text);
-  font-size: 12px;
-}
-
-.assessment-status > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 25px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.assessment-status > a b { font-size: 16px; font-weight: 400; transition: transform 0.3s var(--ease); }
-.assessment-status > a:hover b { transform: translate(3px, -3px); }
 
 .assessment-intro { padding-bottom: 68px; }
 
@@ -2593,7 +2460,6 @@ button:focus-visible,
 @media (max-width: 1024px) {
   .recruitment-callout { grid-template-columns: 0.4fr 1fr; gap: 28px; }
   .recruitment-callout-actions { grid-column: 2; }
-  .assessment-status { grid-template-columns: 0.75fr 1.25fr auto; gap: 22px; }
   .assessment-card-grid { grid-template-columns: 1fr; }
   .assessment-card { padding: 34px; }
   .appendix-grid { grid-template-columns: 1fr; }
@@ -2612,18 +2478,6 @@ button:focus-visible,
   .recruitment-callout-actions { grid-column: 1; flex-direction: column; }
   .quiet-button, .dark-button { width: 100%; }
   .assessment-page { padding-bottom: 25px; }
-  .assessment-hero { min-height: 690px; }
-  .assessment-art { min-height: 300px; }
-  .assessment-orbit { width: 92%; }
-  .assessment-orbit strong { left: 23%; }
-  .assessment-orbit b { right: 23%; }
-  .assessment-status {
-    grid-template-columns: 1fr;
-    gap: 13px;
-    margin-top: 12px;
-    padding: 22px;
-  }
-  .assessment-status > a { justify-content: space-between; margin-top: 4px; padding-top: 16px; border-top: 1px solid var(--line); }
   .assessment-intro { padding-bottom: 46px; }
   .assessment-note { grid-template-columns: 1fr; gap: 15px; padding: 24px 2px; }
   .assessment-note p { font-size: 15px; }
