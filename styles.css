@@ -372,18 +372,23 @@ button {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px solid rgba(29, 29, 31, 0.18);
+  border: 1px solid rgba(62, 82, 101, 0.13);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 12px 40px rgba(62, 79, 103, 0.08);
+  color: rgba(29, 31, 35, 0.86);
+  background:
+    linear-gradient(145deg, rgba(242, 247, 250, 0.44), rgba(210, 232, 237, 0.26));
+  box-shadow:
+    0 10px 32px rgba(62, 79, 103, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
   transform: translate(-50%, -50%);
-  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(8px) saturate(108%);
+  backdrop-filter: blur(8px) saturate(108%);
 }
 
 .visual-core::before {
   position: absolute;
   inset: 8px;
-  border: 1px dashed rgba(29, 29, 31, 0.13);
+  border: 1px dashed rgba(58, 79, 96, 0.1);
   border-radius: inherit;
   content: "";
   animation: rotate 24s linear infinite;
