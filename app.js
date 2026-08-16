@@ -4,6 +4,7 @@ const translations = {
     "nav.about": "关于",
     "nav.research": "研究",
     "nav.results": "成果",
+    "nav.people": "团队",
     "nav.news": "新闻",
     "nav.join": "加入我们",
     "hero.eyebrow": "EQUIVA LAB · RESEARCH GROUP",
@@ -51,8 +52,8 @@ const translations = {
     "people.v3": "清晰洞见",
     "contact.eyebrow": "WORK WITH US",
     "contact.title": "和我们一起，<br /><span>探索不变性</span>",
-    "contact.note": "我们期待研究合作、学术交流，以及对这些问题同样好奇的新成员。",
-    "contact.cta": "查看加入方式",
+    "contact.note": "2026 招新考核现已公布。我们也长期欢迎围绕共同问题的研究交流。",
+    "contact.cta": "查看招新考核",
     "footer.tagline": "INVARIANCE · EQUIVALENCE · REPRESENTATION"
   },
   en: {
@@ -60,6 +61,7 @@ const translations = {
     "nav.about": "About",
     "nav.research": "Research",
     "nav.results": "Results",
+    "nav.people": "Team",
     "nav.news": "News",
     "nav.join": "Join Us",
     "hero.eyebrow": "EQUIVA LAB · RESEARCH GROUP",
@@ -107,8 +109,8 @@ const translations = {
     "people.v3": "Clear insights",
     "contact.eyebrow": "WORK WITH US",
     "contact.title": "Join us to<br /><span>explore invariance.</span>",
-    "contact.note": "We welcome research collaborations, academic exchange, and new members who are equally curious about these questions.",
-    "contact.cta": "Explore opportunities",
+    "contact.note": "The 2026 recruitment assessment is now available. We also welcome ongoing research conversations around shared questions.",
+    "contact.cta": "View recruitment",
     "footer.tagline": "INVARIANCE · EQUIVALENCE · REPRESENTATION"
   }
 };
