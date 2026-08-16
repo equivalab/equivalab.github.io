@@ -2298,6 +2298,8 @@ button:focus-visible,
   background: var(--line);
 }
 
+.submission-spec-single { grid-template-columns: 1fr; }
+
 .submission-spec > div {
   min-width: 0;
   padding: 25px 28px;
