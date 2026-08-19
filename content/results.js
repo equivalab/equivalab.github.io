@@ -118,16 +118,5 @@ window.EQUIVA_RESULTS = [
     links: [
       { labelZh: "论文", labelEn: "Paper", url: "https://arxiv.org/abs/2604.19571" }
     ]
-  },
-  {
-    year: "2025",
-    type: "CONFERENCE",
-    titleEn: "PC-UNet: An Enforcing Poisson Statistics U-Net for Positron Emission Tomography Denoising",
-    authors: "Yang Shi, Jingchao Wang, Liangsi Lu, Mingxuan Huang, Ruixin He, Yifeng Xie, Hanqian Liu, Minzhe Guo, Yangyang Liang, Weipeng Zhang, Zimeng Li, Xuhang Chen",
-    venue: "IEEE BIBM 2025 · pp. 2748–2753",
-    links: [
-      { labelZh: "论文", labelEn: "Paper", url: "https://doi.org/10.1109/BIBM66473.2025.11356275" },
-      { labelZh: "arXiv", labelEn: "arXiv", url: "https://arxiv.org/abs/2510.14995" }
-    ]
   }
 ];
