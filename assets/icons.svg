@@ -11,21 +11,11 @@
   <symbol id="file-text" viewBox="0 0 24 24">
     <path d="M7 3h7l4 4v14H7zM14 3v5h5M10 13h5M10 17h5" />
   </symbol>
-  <symbol id="layers" viewBox="0 0 24 24">
-    <path d="m12 3 9 5-9 5-9-5zM4.5 12 12 16l7.5-4M4.5 16 12 20l7.5-4" />
-  </symbol>
-  <symbol id="code" viewBox="0 0 24 24">
-    <path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14" />
-  </symbol>
   <symbol id="archive" viewBox="0 0 24 24">
     <path d="M4 7h16v14H4zM3 3h18v4H3zM9 11h6" />
   </symbol>
   <symbol id="users" viewBox="0 0 24 24">
     <path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M9.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM17 11a3 3 0 0 0 0-6M21 21v-2.2a3.8 3.8 0 0 0-3-3.7" />
-  </symbol>
-  <symbol id="broadcast" viewBox="0 0 24 24">
-    <circle cx="12" cy="12" r="2" />
-    <path d="M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M4.6 4.6a10.5 10.5 0 0 0 0 14.8M19.4 4.6a10.5 10.5 0 0 1 0 14.8" />
   </symbol>
   <symbol id="user-plus" viewBox="0 0 24 24">
     <path d="M15 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM19 8v6M16 11h6" />

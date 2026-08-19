@@ -1,7 +1,6 @@
 const translations = {
   zh: {
     "nav.home": "首页",
-    "nav.about": "关于",
     "nav.research": "研究",
     "nav.results": "成果",
     "nav.people": "团队",
@@ -18,9 +17,6 @@ const translations = {
     "about.title": "从不同的观测中，<br />识别<span>共同的结构。</span>",
     "about.p1": "同一个对象，会因视角、尺度、模态和环境而呈现不同形态。表象在迁移，规律却可能共享。",
     "about.p2": "Equiva Lab 试图识别这些变化背后的稳定结构，并把它们转化为可理解、可迁移、可验证的表征与方法。",
-    "about.principle1": "从变化中学习",
-    "about.principle2": "在结构中解释",
-    "about.principle3": "向未知处泛化",
     "section.research": "RESEARCH",
     "research.title": "我们的<span>研究方向</span>",
     "research.intro": "我们围绕表征、变化与结构展开基础研究，并关注这些原则如何让智能系统在开放环境中保持可靠。",
@@ -32,33 +28,19 @@ const translations = {
     "research.r3.desc": "从复杂观测中恢复可组合的关系、动力学与因果结构。",
     "section.ideas": "RESULTS",
     "ideas.title": "研究<span>成果</span>",
-    "ideas.intro": "论文、项目与开源工作将在此持续更新。",
-    "ideas.q1": "论文与出版物",
-    "ideas.q1meta": "PUBLICATIONS",
-    "ideas.q2": "研究项目",
-    "ideas.q2meta": "PROJECTS",
-    "ideas.q3": "代码与数据",
-    "ideas.q3meta": "CODE & DATA",
-    "ideas.papers": "查看全部论文、项目与开源成果",
+    "ideas.intro": "精选近期发表成果，完整作者与出处请见成果档案。",
+    "ideas.papers": "查看全部论文与出版物",
     "section.people": "PEOPLE",
     "people.title": "不同背景，<br />共同<span>探索。</span>",
     "people.body": "我们相信，重要的问题往往生长在学科边界。团队欢迎来自机器学习、数学、认知科学与复杂系统等不同背景的研究者。",
     "people.cta": "认识团队",
-    "people.v1small": "WE VALUE",
-    "people.v1": "长期问题",
-    "people.v2small": "WE PRACTICE",
-    "people.v2": "开放讨论",
-    "people.v3small": "WE SEEK",
-    "people.v3": "清晰洞见",
     "contact.eyebrow": "WORK WITH US",
     "contact.title": "和我们一起，<br /><span>探索不变性</span>",
     "contact.note": "2026 招新考核现已公布。我们也长期欢迎围绕共同问题的研究交流。",
-    "contact.cta": "查看招新考核",
-    "footer.tagline": "INVARIANCE · EQUIVALENCE · REPRESENTATION"
+    "contact.cta": "查看招新考核"
   },
   en: {
     "nav.home": "Home",
-    "nav.about": "About",
     "nav.research": "Research",
     "nav.results": "Results",
     "nav.people": "Team",
@@ -75,9 +57,6 @@ const translations = {
     "about.title": "Across different observations,<br />we identify <span>shared structure.</span>",
     "about.p1": "The same object takes different forms across viewpoints, scales, modalities, and environments. Appearances shift; structures may be shared.",
     "about.p2": "Equiva Lab identifies stable structures beneath these changes and turns them into representations and methods that are interpretable, transferable, and testable.",
-    "about.principle1": "Learn from change",
-    "about.principle2": "Explain with structure",
-    "about.principle3": "Generalize beyond known",
     "section.research": "RESEARCH",
     "research.title": "Our <span>research</span>",
     "research.intro": "Our fundamental research revolves around representation, change, and structure—and how these principles can keep intelligent systems reliable in open environments.",
@@ -89,29 +68,16 @@ const translations = {
     "research.r3.desc": "Recover compositional relationships, dynamics, and causal structure from complex observations.",
     "section.ideas": "RESULTS",
     "ideas.title": "Research <span>results</span>",
-    "ideas.intro": "Papers, projects, and open-source work will be updated here.",
-    "ideas.q1": "Papers & Publications",
-    "ideas.q1meta": "PUBLICATIONS",
-    "ideas.q2": "Research Projects",
-    "ideas.q2meta": "PROJECTS",
-    "ideas.q3": "Code & Data",
-    "ideas.q3meta": "CODE & DATA",
-    "ideas.papers": "View all papers, projects, and open-source work",
+    "ideas.intro": "Selected recent publications. See the archive for complete authorship and publication details.",
+    "ideas.papers": "View all publications",
     "section.people": "PEOPLE",
     "people.title": "Different backgrounds.<br />Shared <span>exploration.</span>",
     "people.body": "We believe important questions often grow at disciplinary boundaries. We welcome researchers from machine learning, mathematics, cognitive science, complex systems, and beyond.",
     "people.cta": "Meet the team",
-    "people.v1small": "WE VALUE",
-    "people.v1": "Long-term questions",
-    "people.v2small": "WE PRACTICE",
-    "people.v2": "Open dialogue",
-    "people.v3small": "WE SEEK",
-    "people.v3": "Clear insights",
     "contact.eyebrow": "WORK WITH US",
     "contact.title": "Join us to<br /><span>explore invariance.</span>",
     "contact.note": "The 2026 recruitment assessment is now available. We also welcome ongoing research conversations around shared questions.",
-    "contact.cta": "View recruitment",
-    "footer.tagline": "INVARIANCE · EQUIVALENCE · REPRESENTATION"
+    "contact.cta": "View recruitment"
   }
 };
 
@@ -260,13 +226,67 @@ function renderSiteFooter() {
     </div>`;
 }
 
+function renderHomeResults() {
+  const list = document.querySelector("[data-home-results]");
+  if (!list) return;
+
+  const results = Array.isArray(window.EQUIVA_RESULTS) ? window.EQUIVA_RESULTS.slice(0, 3) : [];
+  list.replaceChildren();
+
+  results.forEach((result, index) => {
+    const primaryLink = result.links?.[0]?.url || "results.html";
+    const item = document.createElement("a");
+    item.className = "home-result-item";
+    item.href = primaryLink;
+    item.setAttribute("aria-label", result.titleEn || result.titleZh || "Publication");
+    if (/^https?:/.test(primaryLink)) {
+      item.target = "_blank";
+      item.rel = "noopener noreferrer";
+    }
+
+    const meta = document.createElement("div");
+    meta.className = "home-result-meta";
+    const ordinal = document.createElement("span");
+    ordinal.textContent = String(index + 1).padStart(2, "0");
+    const type = document.createElement("span");
+    type.textContent = result.type || "PUBLICATION";
+    meta.append(ordinal, type);
+
+    const copy = document.createElement("div");
+    copy.className = "home-result-copy";
+    const title = document.createElement("h3");
+    title.textContent = result.titleEn || result.titleZh || "";
+    const details = document.createElement("div");
+    details.className = "home-result-details";
+    const venue = document.createElement("span");
+    venue.textContent = result.venue || "";
+    details.append(venue);
+
+    if (result.award) {
+      const distinction = document.createElement("span");
+      distinction.className = "home-result-distinction";
+      distinction.append(createIcon("award"));
+      const distinctionText = document.createElement("i");
+      distinctionText.textContent = result.award;
+      distinction.append(distinctionText);
+      details.append(distinction);
+    }
+
+    copy.append(title, details);
+    const arrow = document.createElement("span");
+    arrow.className = "home-result-arrow";
+    arrow.append(createIcon("arrow-up-right"));
+    item.append(meta, copy, arrow);
+    list.append(item);
+  });
+}
+
 function renderResultsArchive() {
   const list = document.querySelector("[data-results-list]");
   if (!list) return;
 
   const results = Array.isArray(window.EQUIVA_RESULTS) ? window.EQUIVA_RESULTS : [];
   const empty = document.querySelector("[data-results-empty]");
-  const summary = document.querySelector("[data-results-summary]");
   empty?.toggleAttribute("hidden", results.length > 0);
   list.replaceChildren();
 
@@ -274,13 +294,6 @@ function renderResultsArchive() {
 
   const orderedResults = [...results].sort((a, b) => Number(b.year || 0) - Number(a.year || 0));
   const years = [...new Set(orderedResults.map((result) => result.year || "—"))];
-
-  if (summary) {
-    const yearRange = years.length > 1 ? `${years.at(-1)}—${years[0]}` : years[0];
-    summary.dataset.zh = `${results.length} 项成果 · ${yearRange}`;
-    summary.dataset.en = `${results.length} publications · ${yearRange}`;
-    summary.textContent = currentLanguage === "zh" ? summary.dataset.zh : summary.dataset.en;
-  }
 
   years.forEach((groupYear) => {
     const yearResults = orderedResults.filter((result) => (result.year || "—") === groupYear);
@@ -372,6 +385,7 @@ function renderResultsArchive() {
 }
 
 renderSiteFooter();
+renderHomeResults();
 renderResultsArchive();
 applyLanguage(currentLanguage);
 
