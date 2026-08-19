@@ -2654,48 +2654,6 @@ p { text-wrap: pretty; }
 
 .archive-empty p { max-width: 700px; line-height: 1.75; }
 
-.policy-list {
-  border-top: 1px solid var(--ink);
-}
-
-.policy-item {
-  min-height: 142px;
-  display: grid;
-  grid-template-columns: 0.24fr 0.8fr 1.25fr;
-  gap: 42px;
-  align-items: center;
-  padding: 27px 2px;
-  border-bottom: 1px solid var(--line);
-  transition: padding 0.35s var(--ease), background 0.35s ease;
-}
-
-.policy-item:hover {
-  padding-right: 20px;
-  padding-left: 20px;
-  background: rgba(255, 255, 255, 0.72);
-}
-
-.policy-item > span {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-}
-
-.policy-item h3 {
-  margin: 0;
-  font-size: 21px;
-  font-weight: 500;
-  letter-spacing: -0.025em;
-}
-
-.policy-item p {
-  max-width: 630px;
-  margin: 0;
-  color: var(--text);
-  font-size: 13px;
-  line-height: 1.75;
-}
-
 .directory-panel {
   min-height: 240px;
   display: grid;
@@ -2855,7 +2813,6 @@ p { text-wrap: pretty; }
 }
 
 @media (max-width: 1024px) {
-  .policy-item { grid-template-columns: 0.16fr 0.72fr 1.12fr; gap: 28px; }
   .directory-panel { grid-template-columns: 0.45fr 1.2fr; gap: 32px; }
   .directory-panel > a { grid-column: 2; justify-self: start; }
 }
@@ -2864,9 +2821,6 @@ p { text-wrap: pretty; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 13px; }
   .hero-secondary-link { margin-left: 2px; }
   .archive-empty { min-height: 280px; padding: 27px 22px; }
-  .policy-item { min-height: 0; grid-template-columns: 34px 1fr; gap: 12px; padding: 25px 2px; }
-  .policy-item p { grid-column: 2; }
-  .policy-item:hover { padding-right: 2px; padding-left: 2px; background: transparent; }
   .directory-panel { min-height: 390px; grid-template-columns: 1fr; gap: 28px; padding: 28px 22px; }
   .directory-panel > a { grid-column: 1; width: 100%; }
   .news-empty { grid-template-columns: 1fr; gap: 12px; padding: 22px 2px; }
@@ -2928,25 +2882,6 @@ p { text-wrap: pretty; }
 .meta-with-icon i,
 .footer-section-title i {
   font-style: normal;
-}
-
-.policy-index {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  color: var(--muted);
-}
-
-.policy-index span {
-  font-size: 9px;
-  letter-spacing: 0.08em;
-}
-
-.policy-index .icon {
-  width: 21px;
-  height: 21px;
-  color: #555b65;
-  stroke-width: 1.25;
 }
 
 .archive-symbol .icon {
@@ -3041,8 +2976,6 @@ p { text-wrap: pretty; }
 .result-entry-links a .icon { width: 13px; height: 13px; }
 
 @media (max-width: 700px) {
-  .policy-index { align-items: flex-start; flex-direction: column; gap: 8px; }
-  .policy-index .icon { width: 18px; height: 18px; }
   .feature-icon { top: 23px; right: 23px; }
   .assessment-card-icon { right: 1px; }
   .appendix-icon { top: 25px; right: 23px; }
