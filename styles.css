@@ -1821,25 +1821,147 @@ button:focus-visible,
   letter-spacing: 0.08em;
 }
 
-.results-index:not(:empty) { border-bottom: 1px solid var(--line); }
+.results-index:not(:empty) { padding-top: 52px; }
 
-.result-entry {
-  min-height: 180px;
+.result-year-group {
   display: grid;
-  grid-template-columns: 0.45fr 1.35fr 0.55fr;
-  gap: 44px;
-  align-items: center;
-  padding: 30px 4px;
-  border-bottom: 1px solid var(--line);
-  transition: padding 0.35s var(--ease), background 0.35s ease;
+  grid-template-columns: minmax(150px, 0.27fr) minmax(0, 1.73fr);
+  border-top: 1px solid var(--ink);
 }
 
-.result-entry:hover { padding-right: 22px; padding-left: 22px; background: #fff; }
-.result-entry-meta { display: flex; flex-direction: column; gap: 10px; color: var(--muted); font-size: 10px; letter-spacing: 0.08em; }
-.result-entry-content h3 { margin: 0 0 12px; font-size: 25px; font-weight: 500; letter-spacing: -0.03em; }
-.result-entry-content p { margin: 0; color: var(--text); font-size: 13px; }
+.result-year-group + .result-year-group { margin-top: 68px; }
+
+.result-year-head {
+  padding: 31px 30px 0 2px;
+}
+
+.result-year-head-inner {
+  position: sticky;
+  top: 96px;
+}
+
+.result-year-head span {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.result-year-head h3 {
+  margin: 12px 0 8px;
+  font-size: 50px;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.result-year-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.result-year-list { border-left: 1px solid var(--line); }
+
+.result-entry {
+  position: relative;
+  min-height: 158px;
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) minmax(130px, 0.28fr);
+  gap: 28px;
+  align-items: center;
+  padding: 31px 4px 31px 34px;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.result-entry:hover {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 2px 0 0 rgba(29, 29, 31, 0.14);
+}
+
+.result-entry.has-distinction {
+  background:
+    radial-gradient(circle at 96% 2%, rgba(183, 216, 255, 0.17), transparent 35%),
+    rgba(255, 255, 255, 0.48);
+}
+
+.result-entry-meta {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-top: 5px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.09em;
+}
+
+.result-entry-meta span:first-child {
+  color: var(--ink);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.result-entry-content { min-width: 0; }
+
+.result-entry-content h3 {
+  max-width: 850px;
+  margin: 0 0 11px;
+  font-size: clamp(19px, 1.65vw, 23px);
+  font-weight: 500;
+  letter-spacing: -0.027em;
+  line-height: 1.34;
+}
+
+.result-entry-authors {
+  margin: 0;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.result-entry-venue {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 8px;
+  color: #343840;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.result-distinction {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border: 1px solid rgba(56, 87, 78, 0.16);
+  border-radius: 999px;
+  color: #386257;
+  background: rgba(222, 243, 236, 0.5);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.result-distinction i { font-style: normal; }
+.result-distinction .icon { width: 12px; height: 12px; stroke-width: 1.35; }
 .result-entry-links { justify-self: end; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
-.result-entry-links a { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 11px; }
+.result-entry-links a {
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+  font-size: 10px;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.result-entry-links a:hover {
+  color: #fff;
+  border-color: var(--ink);
+  background: var(--ink);
+}
 
 .archive-empty {
   min-height: 250px;
@@ -1933,6 +2055,11 @@ button:focus-visible,
 @media (max-width: 1024px) {
   .site-footer { width: min(calc(100% - 48px), var(--max-width)); }
   .footer-main { grid-template-columns: 0.8fr 1.2fr; gap: 50px; }
+  .result-year-group { grid-template-columns: 112px minmax(0, 1fr); }
+  .result-year-head { padding-right: 18px; }
+  .result-year-head h3 { font-size: 40px; }
+  .result-entry { grid-template-columns: 56px minmax(0, 1fr); gap: 22px; }
+  .result-entry-links { grid-column: 2; justify-self: start; justify-content: flex-start; }
 }
 
 @media (max-width: 700px) {
@@ -1945,8 +2072,24 @@ button:focus-visible,
   .archive-bar { align-items: flex-start; flex-direction: column; gap: 8px; }
   .archive-empty { min-height: 300px; grid-template-columns: 1fr; gap: 22px; }
   .archive-empty h3 { font-size: 23px; }
-  .result-entry { grid-template-columns: 1fr; gap: 18px; padding: 26px 2px; }
-  .result-entry-links { justify-self: start; justify-content: flex-start; }
+  .results-index:not(:empty) { padding-top: 38px; }
+  .result-year-group { grid-template-columns: 1fr; }
+  .result-year-group + .result-year-group { margin-top: 52px; }
+  .result-year-head { padding: 22px 2px 21px; }
+  .result-year-head-inner { position: static; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 4px 20px; }
+  .result-year-head span { grid-column: 1 / -1; }
+  .result-year-head h3 { margin: 7px 0 0; font-size: 38px; }
+  .result-year-head p { padding-bottom: 3px; }
+  .result-year-list { border-left: 0; }
+  .result-entry { min-height: 0; grid-template-columns: 36px minmax(0, 1fr); gap: 16px; padding: 26px 2px; }
+  .result-entry-meta { gap: 7px; }
+  .result-entry-meta span:last-child { writing-mode: vertical-rl; }
+  .result-entry-content h3 { font-size: 19px; line-height: 1.38; }
+  .result-entry-authors { font-size: 11px; }
+  .result-entry-venue { font-size: 10px; }
+  .result-entry-links { grid-column: 2; justify-self: start; justify-content: flex-start; }
+  .result-entry:hover { background: transparent; box-shadow: none; }
+  .result-entry.has-distinction:hover { background: radial-gradient(circle at 96% 2%, rgba(183, 216, 255, 0.17), transparent 35%), rgba(255, 255, 255, 0.48); }
   .site-footer { width: calc(100% - 32px); margin-top: 84px; padding-bottom: 28px; }
   .footer-main { grid-template-columns: 1fr; gap: 42px; padding: 42px 0; }
   .footer-links { gap: 16px; }

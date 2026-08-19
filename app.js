@@ -266,47 +266,108 @@ function renderResultsArchive() {
 
   const results = Array.isArray(window.EQUIVA_RESULTS) ? window.EQUIVA_RESULTS : [];
   const empty = document.querySelector("[data-results-empty]");
+  const summary = document.querySelector("[data-results-summary]");
   empty?.toggleAttribute("hidden", results.length > 0);
+  list.replaceChildren();
 
-  results.forEach((result) => {
-    const article = document.createElement("article");
-    article.className = "result-entry reveal";
+  if (!results.length) return;
 
-    const meta = document.createElement("div");
-    meta.className = "result-entry-meta";
-    const year = document.createElement("span");
-    year.textContent = result.year || "—";
-    const type = document.createElement("span");
-    type.textContent = result.type || "RESULT";
-    meta.append(year, type);
+  const orderedResults = [...results].sort((a, b) => Number(b.year || 0) - Number(a.year || 0));
+  const years = [...new Set(orderedResults.map((result) => result.year || "—"))];
 
-    const content = document.createElement("div");
-    content.className = "result-entry-content";
-    const title = document.createElement("h3");
-    title.dataset.zh = result.titleZh || result.titleEn || "";
-    title.dataset.en = result.titleEn || result.titleZh || "";
-    title.textContent = currentLanguage === "zh" ? title.dataset.zh : title.dataset.en;
-    const details = document.createElement("p");
-    details.textContent = [result.authors, result.venue].filter(Boolean).join(" · ");
-    content.append(title, details);
+  if (summary) {
+    const yearRange = years.length > 1 ? `${years.at(-1)}—${years[0]}` : years[0];
+    summary.dataset.zh = `${results.length} 项成果 · ${yearRange}`;
+    summary.dataset.en = `${results.length} publications · ${yearRange}`;
+    summary.textContent = currentLanguage === "zh" ? summary.dataset.zh : summary.dataset.en;
+  }
 
-    const links = document.createElement("div");
-    links.className = "result-entry-links";
-    (result.links || []).forEach((item) => {
-      const anchor = document.createElement("a");
-      anchor.href = item.url;
-      const label = document.createElement("span");
-      label.textContent = item.label;
-      anchor.append(label, createIcon("arrow-up-right"));
-      if (/^https?:/.test(item.url)) {
-        anchor.target = "_blank";
-        anchor.rel = "noopener noreferrer";
+  years.forEach((groupYear) => {
+    const yearResults = orderedResults.filter((result) => (result.year || "—") === groupYear);
+    const group = document.createElement("section");
+    group.className = "result-year-group reveal";
+    group.id = `publications-${groupYear}`;
+
+    const yearHeader = document.createElement("header");
+    yearHeader.className = "result-year-head";
+    const yearHeaderInner = document.createElement("div");
+    yearHeaderInner.className = "result-year-head-inner";
+    const yearKicker = document.createElement("span");
+    yearKicker.textContent = `YEAR / ${groupYear}`;
+    const yearTitle = document.createElement("h3");
+    yearTitle.textContent = groupYear;
+    const yearCount = document.createElement("p");
+    yearCount.dataset.zh = `${yearResults.length} 项成果`;
+    yearCount.dataset.en = `${yearResults.length} ${yearResults.length === 1 ? "publication" : "publications"}`;
+    yearCount.textContent = currentLanguage === "zh" ? yearCount.dataset.zh : yearCount.dataset.en;
+    yearHeaderInner.append(yearKicker, yearTitle, yearCount);
+    yearHeader.append(yearHeaderInner);
+
+    const yearList = document.createElement("div");
+    yearList.className = "result-year-list";
+
+    yearResults.forEach((result, index) => {
+      const article = document.createElement("article");
+      article.className = `result-entry${result.award ? " has-distinction" : ""}`;
+
+      const meta = document.createElement("div");
+      meta.className = "result-entry-meta";
+      const ordinal = document.createElement("span");
+      ordinal.textContent = String(index + 1).padStart(2, "0");
+      const type = document.createElement("span");
+      type.textContent = result.type || "PUBLICATION";
+      meta.append(ordinal, type);
+
+      const content = document.createElement("div");
+      content.className = "result-entry-content";
+      const title = document.createElement("h3");
+      title.dataset.zh = result.titleZh || result.titleEn || "";
+      title.dataset.en = result.titleEn || result.titleZh || "";
+      title.textContent = currentLanguage === "zh" ? title.dataset.zh : title.dataset.en;
+      const authors = document.createElement("p");
+      authors.className = "result-entry-authors";
+      authors.textContent = result.authors || "";
+      const venue = document.createElement("div");
+      venue.className = "result-entry-venue";
+      const venueText = document.createElement("span");
+      venueText.textContent = result.venue || "";
+      venue.append(venueText);
+
+      if (result.award) {
+        const distinction = document.createElement("span");
+        distinction.className = "result-distinction";
+        distinction.append(createIcon("award"));
+        const distinctionText = document.createElement("i");
+        distinctionText.textContent = result.award;
+        distinction.append(distinctionText);
+        venue.append(distinction);
       }
-      links.append(anchor);
+
+      content.append(title, authors, venue);
+
+      const links = document.createElement("div");
+      links.className = "result-entry-links";
+      (result.links || []).forEach((item) => {
+        const anchor = document.createElement("a");
+        anchor.href = item.url;
+        const label = document.createElement("span");
+        label.dataset.zh = item.labelZh || item.label || "查看";
+        label.dataset.en = item.labelEn || item.label || "View";
+        label.textContent = currentLanguage === "zh" ? label.dataset.zh : label.dataset.en;
+        anchor.append(label, createIcon("arrow-up-right"));
+        if (/^https?:/.test(item.url)) {
+          anchor.target = "_blank";
+          anchor.rel = "noopener noreferrer";
+        }
+        links.append(anchor);
+      });
+
+      article.append(meta, content, links);
+      yearList.append(article);
     });
 
-    article.append(meta, content, links);
-    list.append(article);
+    group.append(yearHeader, yearList);
+    list.append(group);
   });
 }
 
