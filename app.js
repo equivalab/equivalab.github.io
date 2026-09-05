@@ -319,20 +319,6 @@ document.querySelectorAll("[data-year]").forEach((element) => {
   element.textContent = new Date().getFullYear();
 });
 
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12, rootMargin: "0px 0px -6%" }
-);
-
-document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
-
 window.addEventListener("load", () => {
   if (!window.location.hash) return;
   const target = document.querySelector(window.location.hash);

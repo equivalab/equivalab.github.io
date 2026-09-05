@@ -774,14 +774,9 @@ button {
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
-}
-
-.reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+  transition: transform 0.45s var(--ease);
 }
 
 a:focus-visible,
@@ -790,9 +785,6 @@ button:focus-visible,
   outline: 2px solid var(--blue);
   outline-offset: 4px;
 }
-
-.research-item.reveal:nth-child(2) { transition-delay: 0.06s; }
-.research-item.reveal:nth-child(3) { transition-delay: 0.12s; }
 
 @keyframes rotate {
   to { transform: rotate(360deg); }
@@ -2276,10 +2268,6 @@ h3,
 
 p { text-wrap: pretty; }
 
-.reveal {
-  transform: translateY(14px);
-}
-
 .hero-actions {
   display: flex;
   align-items: center;
@@ -2583,4 +2571,87 @@ p { text-wrap: pretty; }
   .feature-icon { top: 23px; right: 23px; }
   .assessment-card-icon { right: 1px; }
   .appendix-icon { top: 25px; right: 23px; }
+}
+
+/* Quiet surfaces and a more compact reading rhythm. */
+.page-hero h1 { font-size: clamp(42px, 4.4vw, 62px); line-height: 1.18; }
+.page-hero-copy > p:last-of-type { font-size: 16px; line-height: 1.85; }
+.page-hero-copy, .statement-grid > *, .research-head > * { min-width: 0; }
+.page-hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); }
+.language-toggle { border: 1px solid var(--line); background: transparent; }
+.section-index, .eyebrow, .page-kicker { font-weight: 500; letter-spacing: 0.14em; }
+.research-list { gap: 0; border-top: 1px solid rgba(52, 71, 88, 0.2); }
+.research-item,
+.research-item:nth-child(1),
+.research-item:nth-child(2),
+.research-item:nth-child(3) {
+  min-height: 340px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.research-item + .research-item { border-left: 1px solid rgba(52, 71, 88, 0.12); }
+.research-item::after { display: none; }
+.research-item:hover, .research-item:focus-visible {
+  background: rgba(255, 255, 255, 0.24);
+  box-shadow: none;
+  transform: none;
+}
+.research-item:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+.research-name { margin-top: 32px; }
+.research-name h3 { font-size: 23px; }
+.research-glyph { opacity: 0.65; }
+.research-desc { max-width: 30em; }
+.directory-panel {
+  min-height: 140px;
+  padding: 30px 2px;
+  border-width: 1px 0;
+  border-radius: 0;
+  background: transparent;
+}
+.directory-copy h3 { font-size: 23px; margin-bottom: 8px; }
+.directory-status { font-size: 10px; }
+.culture-grid { gap: 0; border-top: 1px solid var(--line); }
+.culture-grid .feature-card {
+  min-height: 250px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.culture-grid .feature-card + .feature-card { border-left: 1px solid var(--line); }
+.culture-grid .feature-card::after { display: none; }
+.culture-grid .feature-card:hover { background: rgba(255,255,255,0.45); box-shadow: none; transform: none; }
+.culture-grid .feature-card h3 { font-size: 22px; }
+.inline-cta { border-radius: 0; border-block: 1px solid var(--line); background: transparent; }
+.footer-identity > p { max-width: 340px; }
+
+@media (max-width: 1024px) {
+  .research-item { padding-bottom: 82px; }
+  .research-item + .research-item,
+  .culture-grid .feature-card + .feature-card { border-left: 0; border-top: 1px solid var(--line); }
+  .research-item,
+  .research-item:nth-child(1),
+  .research-item:nth-child(2),
+  .research-item:nth-child(3) { min-height: 250px; }
+  .culture-grid .feature-card { min-height: 210px; }
+}
+
+@media (max-width: 700px) {
+  .page-hero { min-height: 0; grid-template-columns: minmax(0, 1fr); }
+  .page-hero h1 { font-size: clamp(34px, 9vw, 42px); }
+  .page-hero-copy { padding: 36px 24px 0; }
+  .page-hero-copy > p:last-of-type { font-size: 15px; }
+  .page-hero-art { min-height: 260px; }
+  .page-hero-art > span { right: 24px; bottom: 20px; font-size: 8px; }
+  .page-section { padding-top: 64px; }
+  .page-section h2, .section-title-row h2 { font-size: 32px; }
+  .research-item { padding: 26px 8px 82px; }
+  .research-name h3 { font-size: 21px; }
+  .research-glyph { right: 12px; bottom: 18px; }
+  .directory-panel { min-height: 0; padding: 24px 2px; gap: 20px; }
+  .directory-copy h3 { font-size: 22px; }
+  .culture-grid .feature-card { padding-inline: 2px; }
+  .culture-grid .feature-icon { right: 6px; }
+  .inline-cta { padding-inline: 2px; }
 }
